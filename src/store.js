@@ -30,6 +30,7 @@ const saveState = (state) => {
 //Module Reducers
 const rootReducer = combineReducers({
     auth: Login.reducer,
+    landingPage: LandingPage.reducer,
 });
 
 //Module Routes
