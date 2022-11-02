@@ -1,0 +1,21 @@
+{
+  "auth": [
+    {
+      "id": "1",
+      "email": "test@gmail.com",
+      "password": "test",
+      "authToken": "tokenSample"
+    }
+  ],
+  "tableData": [
+    {
+      "id": 1,
+      "firstName": "First Name",
+      "fastName": "Last Name",
+      "address": "Suarez",
+      "contactNo": "09456567434",
+      "birthdate": "2005-02-02",
+      "gender": "Male"
+    }
+  ]
+}
