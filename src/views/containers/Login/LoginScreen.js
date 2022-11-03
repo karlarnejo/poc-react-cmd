@@ -8,25 +8,17 @@ import { ROOT } from "../../../config/settings";
 
 const LoginScreen = () => {
 
-  const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
-  const validateForm = () => {
-    return 0 < email.length && 0 < password.length;
-  }
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
-//   const handlePasswordChange = (event) => {
-//     setPassword(event.target.value)
-//   }
-
-//   const handleEmailChange = (event) => {
-//     setEmail(event.target.value)
-//   }
+    const validateForm = () => {
+        return 0 < email.length && 0 < password.length;
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -45,7 +37,7 @@ const LoginScreen = () => {
 
     return (
       <div className="Login">
-        <center><h2>Authentication Demo</h2></center>
+        <center><h2>Accenture PoC</h2></center>
         <Form onSubmit={handleSubmit}>
           <Form.Group size="lg" controlId="email">
             <Form.Label>Email</Form.Label>

@@ -52,7 +52,7 @@ const RootPage = () => {
     return (
         <Container fluid>
             <center>
-                <h1>ReactJS Codebase</h1>
+                <h1>Accenture PoC</h1>
             </center>
 
             <Tabs
@@ -111,18 +111,6 @@ const RootPage = () => {
                                         />
                                     </Form.Group>
                                 </Form>
-                                <hr/>
-                                    <Card>
-                                        {output.map((value, key) => {
-                                            let splitted = value.split("\n")
-                                            return(
-                                                <div key={key}>
-                                                    <div>{">" + splitted[0]}</div>
-                                                    <div>{splitted[1]}</div>
-                                                </div>
-                                            )
-                                        })}
-                                    </Card>
                             </Card>
                         </Col>
                     </Row>
