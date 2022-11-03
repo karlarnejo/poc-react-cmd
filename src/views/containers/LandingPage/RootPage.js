@@ -59,17 +59,18 @@ const RootPage = () => {
                                         />
                                     </Form.Group>
                                 </Form>
-                                <Card>
-                                    {output.map((value, key) => {
-                                        let splitted = value.split("\n")
-                                        return(
-                                            <div key={key}>
-                                                <div>{">" + splitted[0]}</div>
-                                                <div>{splitted[1]}</div>
-                                            </div>
-                                        )
-                                    })}
-                                </Card>
+                                <hr/>
+                                    <Card>
+                                        {output.map((value, key) => {
+                                            let splitted = value.split("\n")
+                                            return(
+                                                <div key={key}>
+                                                    <div>{">" + splitted[0]}</div>
+                                                    <div>{splitted[1]}</div>
+                                                </div>
+                                            )
+                                        })}
+                                    </Card>
                             </Card>
                         </Col>
                     </Row>
