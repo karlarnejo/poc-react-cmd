@@ -14,3 +14,16 @@ export const listOutput = (payload) => (dispatch) => {
             throw error;
         });
 }
+
+export const listDirs = (payload) => (dispatch) => {
+
+    return apiService.post(path.GET_DIRS, payload)
+        .then(response => {
+            if(response.data.data){
+                // dispatch(Actions.listOutput(response.data.data))
+                return response.data.data;
+            }
+        }).catch(error => {
+            throw error;
+        });
+}

@@ -9,26 +9,32 @@ const RootPage = () => {
 
     const [command, setCommand] = useState("")
     const [output, setOutput] = useState([])
-    const [fileNames, setFileNames] = useState([])
+    const [fileDirs, setFileDirs] = useState([])
 
     const handleOnchange = (e) => {
         setCommand(e.target.value)
     }
 
     const handleOnchangeFile = (e) => {
-        console.log(e.target.files)
         //convert from array-like to array
         let files = [...e.target.files]
-        let tmpArr = []
+        let convertedArray = []
 
         files.map((fileName) => {
-            tmpArr.push(fileName.name)
+            convertedArray.push(fileName.name)
         })
         
-        setFileNames(tmpArr)
+        let payload = {
+            files: convertedArray
+        };
+
+        dispatch(landingPageOperations.listDirs(payload))
+            .then((response) => {
+                setFileDirs(response)
+            })
     }
 
-    const submitForm = (e) => {
+    const submitFormCmd = (e) => {
         e.preventDefault()
 
         let payload = {
@@ -37,13 +43,10 @@ const RootPage = () => {
 
         dispatch(landingPageOperations.listOutput(payload))
             .then((response) => {
-                setOutput(oldVal => [...oldVal, response])
+                setOutput(oldVal => [...oldVal, response.output])
+                setCommand("")
             })
     }
-
-    useEffect(() => {
-        console.log("eee", fileNames)
-    }, [fileNames]) //eslint-disable-line
 
     useEffect(() => {
         
@@ -64,7 +67,7 @@ const RootPage = () => {
                     <Row>
                         <Col xs={12}>
                             <Card>
-                                <Form className='' onSubmit={submitForm}>
+                                <Form className='' onSubmit={submitFormCmd}>
                                     <Form.Group className='m-2'>
                                         <Form.Label>{"Command"}</Form.Label>
                                         <Form.Control
@@ -97,7 +100,7 @@ const RootPage = () => {
                 <Row>
                         <Col xs={12}>
                             <Card>
-                                <Form className='' onSubmit={submitForm}>
+                                <Form className=''>
                                     <Form.Group className='m-2'>
                                         <Form.Label>{"Files"}</Form.Label>
                                         <Form.Control
@@ -111,6 +114,16 @@ const RootPage = () => {
                                         />
                                     </Form.Group>
                                 </Form>
+                                <hr/>
+                                    <Card>
+                                        {fileDirs.map((value, key) => {
+                                            return(
+                                                <div key={key}>
+                                                    {key+1 + ".) " +value.absolutePaths}
+                                                </div>
+                                            )
+                                        })}
+                                    </Card>
                             </Card>
                         </Col>
                     </Row>
